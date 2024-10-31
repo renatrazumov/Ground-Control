@@ -94,7 +94,7 @@ npm run preview
 ### Prerequisites
 - cPanel access with Node.js Selector feature
 - Domain configured in Namecheap
-- Node.js v18.20.4
+- Node.js v18.20.4 (required for ESM support)
 - npm v10.7.0
 
 ### Configuration Steps
@@ -126,14 +126,14 @@ npm run preview
        - VITE_PUBLIC_URL: https://gcl401.com/
 
 4. **Critical Configuration**
-   - In `package.json`, ensure "type" is set to "commonjs":
+   - Ensure package.json has `"type": "module"` for ESM support:
      ```json
      {
-       "type": "commonjs"
+       "type": "module"
      }
      ```
-   - Server.js must be configured to serve from the dist directory
-   - All imports must use CommonJS require() syntax
+   - Server.js uses ESM import syntax
+   - All imports must use ESM syntax (import/export)
 
 5. **Post-Deployment**
    - Enter the virtual environment:
@@ -152,7 +152,7 @@ npm run preview
 - Verify npm version matches v10.7.0
 - Ensure all dependencies are properly listed in package.json
 - Check file permissions in the application directory
-- Verify "type": "commonjs" in package.json
+- Verify ESM imports are used consistently
 - Confirm server.js is using correct dist directory paths
 
 ## Technologies Used
